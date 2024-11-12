@@ -1,0 +1,41 @@
+<h3>Add new pokemon</h3>
+
+<%= form_tag pokemons_path do %>
+  <%= label_tag :name, "Pokemon Name" %>
+  <%= text_field_tag :name, nil, class: "form-control mb-4" %>
+
+  <button type="submit" class="btn-primary">Add Pokemon</button>
+<% end %>
+
+<h2>Pokemon List</h2>
+
+<div class="pokemon-list">
+  <% @pokemons.order_by_poke_index.each do |pokemon| %>
+    <div class="pokemon-card">
+      <img src="<%= pokemon.sprite %>" alt="<%= pokemon.name %>">
+
+      <dl>
+        <dt>ID</dt>
+        <dd>#<%= pokemon.poke_index %></dd>
+
+        <dt>Name</dt>
+        <dd><%= pokemon.name %></dd>
+
+        <dt>Weight</dt>
+        <dd><%= pokemon.weight %></dd>
+
+        <dt>Height</dt>
+        <dd><%= pokemon.height %></dd>
+
+        <dt>Ability</dt>
+        <dd><%= pokemon.ability %></dd>
+
+        <dt>Base Experience</dt>
+        <dd><%= pokemon.base_experience %></dd>
+
+        <dt>Total Stat</dt>
+        <dd><%= pokemon.total_stat %></dd>
+      </dl>
+    </div>
+  <% end %>
+</div>
