@@ -1,0 +1,75 @@
+<h1>Trades</h1>
+
+<% @trades.each do |trade| %>
+  <div class="trade">
+    <h2>Trade #<%= trade.id %></h2>
+
+    <div class="teams">
+      <div class="team pokemon-list">
+        <h3>Team A</h3>
+        <% trade.trainer_a_pokemons.each do |trainer_a_pokemon| %>
+          <% pokemon = Pokemon.find(trainer_a_pokemon.pokemon_id) %>
+          <div class="pokemon-card">
+            <img src="<%= pokemon.sprite %>" alt="<%= pokemon.name %>">
+
+            <dl>
+              <dt>ID</dt>
+              <dd>#<%= pokemon.poke_index %></dd>
+
+              <dt>Name</dt>
+              <dd><%= pokemon.name %></dd>
+
+              <dt>Weight</dt>
+              <dd><%= pokemon.weight %></dd>
+
+              <dt>Height</dt>
+              <dd><%= pokemon.height %></dd>
+
+              <dt>Ability</dt>
+              <dd><%= pokemon.ability %></dd>
+
+              <dt>Base Experience</dt>
+              <dd><%= pokemon.base_experience %></dd>
+
+              <dt>Total Stat</dt>
+              <dd><%= pokemon.total_stat %></dd>
+            </dl>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="team team-b">
+        <h2>Team B</h2>
+        <% trade.trainer_b_pokemons.each do |trainer_b_pokemon| %>
+          <% pokemon = Pokemon.find(trainer_b_pokemon.pokemon_id) %>
+          <div class="pokemon">
+            <img src="<%= pokemon.sprite %>" alt="<%= pokemon.name %>">
+
+            <dl>
+              <dt>ID</dt>
+              <dd>#<%= pokemon.poke_index %></dd>
+
+              <dt>Name</dt>
+              <dd><%= pokemon.name %></dd>
+
+              <dt>Weight</dt>
+              <dd><%= pokemon.weight %></dd>
+
+              <dt>Height</dt>
+              <dd><%= pokemon.height %></dd>
+
+              <dt>Ability</dt>
+              <dd><%= pokemon.ability %></dd>
+
+              <dt>Base Experience</dt>
+              <dd><%= pokemon.base_experience %></dd>
+
+              <dt>Total Stat</dt>
+              <dd><%= pokemon.total_stat %></dd>
+            </dl>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

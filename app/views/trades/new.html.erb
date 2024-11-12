@@ -1,0 +1,67 @@
+<h2>Create Trade</h2>
+
+<%= form_tag trades_path, method: :post do %>
+  <h3>Team A</h3>
+
+  <div class="team">
+    <h4><%= "team_a" %></h4>
+
+    <div class="form-group">
+      <%= select_tag "#{team_name}_pokemon[]",
+                     options_for_select(@available_pokemons.map { |p| [p.name, p.id] }),
+                     class: "form-control",
+                     include_blank: true %>
+    </div>
+
+
+    <div class="team-pokemon-list">
+      <% @selected_pokemons[team_name].each do |pokemon_id| %>
+        <div class="pokemon-card">
+          <img src="<%= Pokemon.find(pokemon_id).sprite %>" alt="<%= Pokemon.find(pokemon_id).name %>">
+
+          <dl>
+            <dt>ID</dt>
+            <dd>#<%= Pokemon.find(pokemon_id).poke_index %></dd>
+
+            <dt>Name</dt>
+            <dd><%= Pokemon.find(pokemon_id).name %></dd>
+
+          </dl>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Team B</h3>
+
+    <div class="team">
+    <h4><%= "team_b" %></h4>
+
+    <div class="form-group">
+      <%= select_tag "#{team_name}_pokemon[]",
+                     options_for_select(@available_pokemons.map { |p| [p.name, p.id] }),
+                     class: "form-control",
+                     include_blank: true %>
+    </div>
+
+
+    <div class="team-pokemon-list">
+      <% @selected_pokemons[team_name].each do |pokemon_id| %>
+        <div class="pokemon-card">
+          <img src="<%= Pokemon.find(pokemon_id).sprite %>" alt="<%= Pokemon.find(pokemon_id).name %>">
+
+          <dl>
+            <dt>ID</dt>
+            <dd>#<%= Pokemon.find(pokemon_id).poke_index %></dd>
+
+            <dt>Name</dt>
+            <dd><%= Pokemon.find(pokemon_id).name %></dd>
+
+          </dl>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= submit_tag "Check Trade", class: "btn btn-primary" %>
+<% end %>
