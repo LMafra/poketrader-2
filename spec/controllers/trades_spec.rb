@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Trades', type: :request do
+RSpec.describe 'Trades', type: :controller do
   describe 'GET /index' do
     pending "add some examples (or delete) #{__FILE__}"
   end

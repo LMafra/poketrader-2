@@ -11,10 +11,6 @@ class PokemonsController < ApplicationController
     raise e.message
   end
 
-  def destroy
-    @pokemon = Pokemon.find(params[:id]).destroy
-  end
-
   private
 
   def pokemon_params
