@@ -62,13 +62,13 @@ group :development, :test do
   gem "byebug"
   gem "factory_bot_rails"
   gem "faker"
-  gem "rspec-rails", "~> 6.1.0"
   gem "rspec"
   gem "rspec-core"
   gem "rspec-expectations"
   gem "rspec-mocks"
   gem "rails-controller-testing"
   gem "simplecov"
+  gem "rspec-rails", "~> 7.1.0"
 end
 
 group :development do
