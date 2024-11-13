@@ -16,17 +16,17 @@ class FindPokemon
     raise PokemonNotFound, "Empty pokemon name" unless @pokemon_info.name.present?
 
     @new_pokemon = create_pokemon
-    @new_pokemon.save!
+    check_for_existing_pokemon(@new_pokemon)
+    save_pokemon
     create_stats
 
     @new_pokemon
-  rescue StandardError => e
-    if e.message == "Validation failed: Poke index has already been taken"
-      raise AlreadyExistPokemon,
-            "Pokemon already exists"
+  rescue ActiveRecord::RecordInvalid => e
+    if e.record.errors.details[:poke_index]&.any? { |error| error[:error] == :taken }
+      raise AlreadyExistPokemon, "Pokemon already exists"
+    else
+      raise e
     end
-
-    raise e
   end
 
   private
@@ -43,6 +43,13 @@ class FindPokemon
     )
   end
 
+
+  def check_for_existing_pokemon(new_pokemon)
+    if Pokemon.find_by(poke_index: new_pokemon.poke_index)
+      raise AlreadyExistPokemon, "Pokemon #{new_pokemon.name.capitalize} already exists"
+    end
+  end
+
   def create_stats
     @pokemon_info.stats.each do |stat|
       Stat.create(
@@ -51,5 +58,9 @@ class FindPokemon
         pokemon_id: @new_pokemon.id
       )
     end
+  end
+
+  def save_pokemon
+    @new_pokemon.save!
   end
 end

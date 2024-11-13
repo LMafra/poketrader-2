@@ -1,24 +1,32 @@
-# README
+![alt text](https://i2.wp.com/i.imgur.com/Gc979LS.gif?w=640)
+# PokéTrader-2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Revisitando esse desafio para melhorar minhas práticas. Foco é melhorar conceitos de teste, clean code e maneiras de antipattern.
 
-Things you may want to cover:
 
-* Ruby version
+## Introdução
 
-* System dependencies
+Calculadora de troca de pokémons, mostrando se a troca entre dois times, de 1 até 6 pokémons, é justa ou não.
 
-* Configuration
+Para sua realização, foi utilizada a api do [PokéApi](https://pokeapi.co/) para obter os pokémons e seus valores.
 
-* Database creation
+### Backend
 
-* Database initialization
+O backend tem o papel de alimentar o front com as informações da Api. Foi construído em Ruby on Rails, com SQLite como banco. Além disso, foi utilizado Rubocop para melhores práticas de escritas e Rspec para realizar testes unitários e de cobertura.
 
-* How to run the test suite
+#### Como compilar
 
-* Services (job queues, cache servers, search engines, etc.)
+Para rodar o banco, basta entrar na pasta backend e rodar o seguinte comandos:
 
-* Deployment instructions
 
-* ...
+Caso queira deletar o banco, basta rodar o seguinte comando:
+
+
+Para compilar o código, basta entrar na pasta backend e rodar os seguintes comandos:
+
+### Frontend
+
+O frontend tem o papel de obter as informações do backend e mostrar para o usuário
+#### Como compilar
+
+Para compilar o código, basta entrar na pasta frontend e rodar os seguintes comandos:

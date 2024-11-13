@@ -10,10 +10,6 @@ class Pokemon < ApplicationRecord
   scope :order_by_poke_index, -> { order(poke_index: :asc) }
 
   def total_stat
-    sum_stat = 0
-    stats.each do |stat|
-      sum_stat += stat.base_value
-    end
-    sum_stat
+    stats.sum(&:base_value)
   end
 end
