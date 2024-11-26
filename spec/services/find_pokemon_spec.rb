@@ -12,7 +12,7 @@ RSpec.describe FindPokemon do
         height: 4,
         weight: 60,
         base_experience: 112,
-        abilities: [instance_double("Ability", ability: instance_double("AbilityDetail", name: "static"))],
+        abilities: [ instance_double("Ability", ability: instance_double("AbilityDetail", name: "static")) ],
         sprites: instance_double("Sprites", front_shiny: "sprite_url"),
         stats: [
           stat: instance_double("StatDetail", name: "speed", base_stat: 90)

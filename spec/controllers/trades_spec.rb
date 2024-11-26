@@ -9,7 +9,7 @@ RSpec.describe TradesController, type: :controller do
       newer_trade = FactoryBot.create(:trade, created_at: Time.now)
 
       get :index
-      expect(assigns(:trades)).to eq([newer_trade, older_trade])
+      expect(assigns(:trades)).to eq([ newer_trade, older_trade ])
     end
 
     it "renders the index template" do
